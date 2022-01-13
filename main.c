@@ -66,7 +66,7 @@ void lines_to_array(char *line, char **copy)
 		{
 			copy[i] = line;
 			i++;
-			line = strtok(NULL, "\n");
+			line = strtok(NULL, "\n\t");
 		}
 		else
 			i++;
@@ -97,7 +97,7 @@ int main(int argc, char **argv)
 		OPEN_ERROR(argv[1]);
 	read(fd, buff, 1024);
 	replace_emptylines(buff, copied_lines);
-	line = strtok(buff, "\n");
+	line = strtok(buff, "\n\t");
 	lines_to_array(line, copied_lines);
 	for (i = 1; copied_lines[i - 1]; i++)
 	{
