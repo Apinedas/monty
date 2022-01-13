@@ -68,7 +68,7 @@ int count_lines(char *s)
 int main(int argc, char **argv)
 {
 	char *buff, *line, **copied_lines, *exec_line = NULL;
-	int fd, lines, len_read = 1, i = 0;
+	int fd, lines, i = 0;
 	unsigned int j;
 	void (*handling_function)(stack_t **, unsigned int);
 	stack_t *stack = NULL;
@@ -81,12 +81,11 @@ int main(int argc, char **argv)
 	buff = _calloc(1024, sizeof(*buff));
 	if (buff == NULL)
 		MALLOC_ERROR;
-	while (len_read > 0)
-		len_read = read(fd, buff, 1024);
+	read(fd, buff, 1024);
 	lines = count_lines(buff);
 	copied_lines = malloc(sizeof(*copied_lines) * (lines + 2));
 	if (!copied_lines)
-		exit(EXIT_FAILURE);
+		MALLOC_ERROR;
 	line = strtok(buff, "\n");
 	while (line)
 	{
@@ -102,9 +101,10 @@ int main(int argc, char **argv)
 			continue;
 		handling_function = getopcode_fun(exec_line);
 		if (!handling_function)
-			exit(EXIT_FAILURE);
+			INSTRUCTION_ERROR(j, exec_line);
 		handling_function(&stack, j);
 	}
+	if (stack)
+		free_dlistint(stack);
 	FREEANDCLOSE(buff, copied_lines, fd);
-	return (0);
 }

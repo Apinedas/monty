@@ -19,7 +19,7 @@ void (*getopcode_fun(char *opcode))(stack_t **, unsigned int)
 		{"nop", op_nop}*/
 	};
 
-	while (i <= 2)
+	while (i <= 1)
 	{
 		if (_strcmp(made_opcodes[i].opcode, opcode) == 0)
 			return (made_opcodes[i].f);

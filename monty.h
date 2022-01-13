@@ -92,6 +92,13 @@ do {\
 	free(COPY);\
 	free(BUFF);\
 	close(FD);\
+	exit(EXIT_SUCCESS);\
+} while (0)
+
+#define  INSTRUCTION_ERROR(LINE, INSTRUCTION) \
+do {\
+	fprintf(stderr, "L%d: unknown instruction %s\n", LINE, INSTRUCTION);\
+	exit(EXIT_FAILURE);\
 } while (0)
 
 #endif
