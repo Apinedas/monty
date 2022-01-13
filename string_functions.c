@@ -96,13 +96,16 @@ int _strcmp(char *s1, char *s2)
 /**
  * string_is_int - checks if string is an int
  * @s: String to check
- * Return: 0 if is an int. Any positive value otherwise
+ * Return: 0 if is an int, any positive value if s exist
+ * and is not an int, or -1 if s is NULL
  */
 
 int string_is_int(char *s)
 {
 	int ret = 0, i = 0;
 
+	if (!s)
+		return (-1);
 	if (s[i] == 45 || (s[i] >= 48 && s[i] <= 57))
 		i++;
 	else

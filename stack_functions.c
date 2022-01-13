@@ -8,17 +8,21 @@
 
 void op_push(stack_t **stack, unsigned int line_number)
 {
-	int value_to_add = 0;
+	int value_to_add = 0, isint;
 	char *value;
 
 	value = strtok(NULL, " ");
-	if (string_is_int(value) == 0)
+	isint = string_is_int(value);
+	if (isint == 0)
 	{
 		value_to_add = atoi(value);
 		add_dnodeint(stack, value_to_add);
 	}
 	else
-		exit(line_number);
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 }
 
 /**
