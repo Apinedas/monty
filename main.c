@@ -83,7 +83,7 @@ int main(int argc, char **argv)
 		MALLOC_ERROR;
 	read(fd, buff, 1024);
 	lines = count_lines(buff);
-	copied_lines = malloc(sizeof(*copied_lines) * (lines + 2));
+	copied_lines = _calloc((lines + 2), sizeof(*copied_lines));
 	if (!copied_lines)
 		MALLOC_ERROR;
 	line = strtok(buff, "\n");
@@ -93,7 +93,6 @@ int main(int argc, char **argv)
 		i++;
 		line = strtok(NULL, "\n");
 	}
-	copied_lines[i] = NULL;
 	for (j = 1; copied_lines[j - 1]; j++)
 	{
 		exec_line = strtok(copied_lines[j - 1], " ");
@@ -107,4 +106,5 @@ int main(int argc, char **argv)
 	if (stack)
 		free_dlistint(stack);
 	FREEANDCLOSE(buff, copied_lines, fd);
+	return (0);
 }

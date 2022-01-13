@@ -92,7 +92,6 @@ do {\
 	free(COPY);\
 	free(BUFF);\
 	close(FD);\
-	exit(EXIT_SUCCESS);\
 } while (0)
 
 #define  INSTRUCTION_ERROR(LINE, INSTRUCTION) \
