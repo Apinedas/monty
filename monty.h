@@ -75,15 +75,13 @@ do {\
 
 #define OPEN_ERROR(FILE) \
 do {\
-	write(STDERR_FILENO, "Error: Can't open file ", _strlen("Error: Can't open file "));\
-		write(STDERR_FILENO, FILE, _strlen(FILE));\
-		write(STDERR_FILENO, "\n", 1);\
-		exit(EXIT_FAILURE);\
+	fprintf(stderr, "Error: Can't open file %s\n", FILE);\
+	exit(EXIT_FAILURE);\
 } while (0)
 
 #define MALLOC_ERROR \
 do {\
-	write(STDERR_FILENO, "Error: malloc failed\n", _strlen("Error: malloc failed\n"));\
+	fprintf(stderr, "Error: malloc failed");\
 	exit(EXIT_FAILURE);\
 } while (0)
 
