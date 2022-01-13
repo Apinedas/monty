@@ -82,8 +82,8 @@ void lines_to_array(char *line, char **copy)
 
 int main(int argc, char **argv)
 {
-	char *buff, *line, **copied_lines, *exec_line = NULL;
-	int fd, lines;
+	char buff[1024], *line, *copied_lines[1024], *exec_line = NULL;
+	int fd;
 	unsigned int i;
 	void (*handling_function)(stack_t **, unsigned int);
 	stack_t *stack = NULL;
@@ -93,14 +93,7 @@ int main(int argc, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 		OPEN_ERROR(argv[1]);
-	buff = _calloc(1024, sizeof(*buff));
-	if (!buff)
-		MALLOC_ERROR;
 	read(fd, buff, 1024);
-	lines = count_lines(buff);
-	copied_lines = _calloc((lines + 1), sizeof(*copied_lines));
-	if (!copied_lines)
-		MALLOC_ERROR;
 	replace_emptylines(buff, copied_lines);
 	line = strtok(buff, "\n");
 	lines_to_array(line, copied_lines);
@@ -111,11 +104,11 @@ int main(int argc, char **argv)
 			continue;
 		handling_function = getopcode_fun(exec_line);
 		if (!handling_function)
-			INSTRUCTION_ERROR(i, exec_line);
+			INSTRUCTION_ERROR(i, exec_line, stack);
 		handling_function(&stack, i);
 	}
 	if (stack)
 		free_dlistint(stack);
-	FREEANDCLOSE(buff, copied_lines, fd);
+	close(fd);
 	return (0);
 }

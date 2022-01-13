@@ -21,6 +21,7 @@ void op_push(stack_t **stack, unsigned int line_number)
 	else
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
 	}
 }

@@ -85,16 +85,16 @@ do {\
 	exit(EXIT_FAILURE);\
 } while (0)
 
-#define FREEANDCLOSE(BUFF, COPY, FD) \
+#define MALLOC_ERROR1(BUFF) \
 do {\
-	free(COPY);\
-	free(BUFF);\
-	close(FD);\
+	fprintf(stderr, "Error: malloc failed");\
+	exit(EXIT_FAILURE);\
 } while (0)
 
-#define  INSTRUCTION_ERROR(LINE, INSTRUCTION) \
+#define  INSTRUCTION_ERROR(LINE, INSTRUCTION, STACK) \
 do {\
 	fprintf(stderr, "L%d: unknown instruction %s\n", LINE, INSTRUCTION);\
+	free_dlistint(STACK);\
 	exit(EXIT_FAILURE);\
 } while (0)
 
