@@ -1,43 +1,6 @@
 #include "monty.h"
 
 /**
- * replacetabs - Replaces tabs with spaces on a line
- * @line: Line to replace tabs in
- */
-
-void replacetabs(char *line)
-{
-	int i;
-
-	for (i = 0; line[i]; i++)
-	{
-		if (line[i] == '\t')
-			line[i] = ' ';
-	}
-}
-
-/**
- * count_words - Count words of a string, and words are separated by spaces
- * @s: String to count words
- * Return: Number of words
- */
-
-int count_words(char *s)
-{
-	int ret, i;
-
-	ret = 0;
-	if (s == NULL)
-		return (ret);
-	for (i = 0; s[i]; i++)
-	{
-		if ((s[i] == ' ' && s[i + 1] != ' ') || (s[i] != ' ' && i == 0))
-			ret++;
-	}
-	return (ret);
-}
-
-/**
  * count_lines - Count lines of a string
  * @s: String to count lines
  * Return: Number of lines
