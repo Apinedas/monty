@@ -34,7 +34,8 @@ void op_push(stack_t **stack, unsigned int line_number)
 
 void op_pall(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
-	print_dlistint(*stack);
+	if (stack)
+		print_dlistint(*stack);
 }
 
 /**
@@ -45,7 +46,7 @@ void op_pall(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 
 void op_pint(stack_t **stack, unsigned int line_number)
 {
-	if (!*stack)
+	if (!stack || !*stack)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
