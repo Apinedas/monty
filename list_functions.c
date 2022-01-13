@@ -6,7 +6,7 @@
  * Return: number of nodes on list
  */
 
-size_t print_dlistint(const stack_t *h)
+size_t print_dlistint(stack_t *h)
 {
 	size_t lenght = 0;
 
