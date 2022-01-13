@@ -6,8 +6,10 @@
  * @line_number: file's line number
  */
 
-void op_nop(__attribute__((unused))stack_t **stack, __attribute__((unused))unsigned int line_number)
+void op_nop(stack_t **stack, unsigned int line_number)
 {
+	(void)stack;
+	(void)line_number;
 }
 
 /**
@@ -26,6 +28,6 @@ void op_add(stack_t **stack, unsigned int line_number)
 	else
 	{
 		((*stack)->next)->n = (*stack)->n + ((*stack)->next)->n;
-        delete_dnodeint_at_index(stack, 0);
+		delete_dnodeint_at_index(stack, 0);
 	}
 }
