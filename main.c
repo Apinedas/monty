@@ -88,6 +88,8 @@ int main(int argc, char **argv)
 	void (*handling_function)(stack_t **, unsigned int);
 	stack_t *stack = NULL;
 
+	initialize_buffer(buff, 1024);
+	initialize_array(copied_lines, 1024);
 	if (argc != 2)
 		USAGE_ERROR;
 	fd = open(argv[1], O_RDONLY);

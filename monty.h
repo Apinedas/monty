@@ -52,6 +52,8 @@ char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 int string_is_int(char *s);
+void initialize_buffer(char *s, int size);
+void initialize_array(char **s, int size);
 size_t print_dlistint(stack_t *h);
 stack_t *add_dnodeint(stack_t **head, const int n);
 stack_t *add_dnodeint_end(stack_t **head, const int n);
