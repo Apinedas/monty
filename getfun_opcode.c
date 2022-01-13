@@ -16,10 +16,15 @@ void (*getopcode_fun(char *opcode))(stack_t **, unsigned int)
 		{"pop", op_pop},
 		{"swap", op_swap},
 		{"add", op_add},
-		{"nop", op_nop}
+		{"nop", op_nop},
+		{"sub", op_sub},
+		{"div", op_div},
+		{"mul", op_mul},
+		{"mod", op_mod},
+		{"#", op_nop}
 	};
 
-	while (i <= 6)
+	while (i <= 11)
 	{
 		if (_strcmp(made_opcodes[i].opcode, opcode) == 0)
 			return (made_opcodes[i].f);
