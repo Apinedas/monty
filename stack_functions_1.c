@@ -52,7 +52,45 @@ void op_pint(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	else
+		printf("%d\n", (*stack)->n);
+}
+
+/**
+ * op_pop - removes the top element of the stack.
+ * @stack: pointer to pointer of head's stack
+ * @line_number: file's line number
+ */
+
+void op_pop(stack_t **stack, unsigned int line_number)
+{
+	if (!stack || !*stack)
 	{
-		fprintf(stdout, "%d\n", (*stack)->n);
+		fprintf(stderr, "L%d: can't pop an stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	else
+		delete_dnodeint_at_index(stack, 0);
+}
+
+/**
+ * op_swap - swaps the top two elements of the stack.
+ * @stack: pointer to pointer of head's stack
+ * @line_number: file's line number
+ */
+
+void op_swap(stack_t **stack, unsigned int line_number)
+{
+	int aux_value;
+
+	if (!stack || !*stack || !(*stack)->next)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		aux_value = (*stack)->n;
+		(*stack)->n = ((*stack)->next)->n;
+		((*stack)->next)->n = aux_value;
 	}
 }
