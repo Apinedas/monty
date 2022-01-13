@@ -36,3 +36,22 @@ void op_pall(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
 	print_dlistint(*stack);
 }
+
+/**
+ * op_pint - prints the value at the top of the stack, followed by a new line.
+ * @stack: pointer to pointer of head's stack
+ * @line_number: file's line number
+ */
+
+void op_pint(stack_t **stack, unsigned int line_number)
+{
+	if (!*stack)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		printf("%d\n", (*stack)->n);
+	}
+}

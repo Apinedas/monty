@@ -12,9 +12,10 @@ void (*getopcode_fun(char *opcode))(stack_t **, unsigned int)
 	instruction_t made_opcodes[] = {
 		{"push", op_push},
 		{"pall", op_pall},
+		{"pint", op_pint}
 	};
 
-	while (i <= 1)
+	while (i <= 2)
 	{
 		if (_strcmp(made_opcodes[i].opcode, opcode) == 0)
 			return (made_opcodes[i].f);
