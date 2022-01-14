@@ -22,7 +22,7 @@ int main(int argc, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 		OPEN_ERROR(argv[1]);
-	read(fd, buff, 4096);
+	read(fd, buff, 10000);
 	close(fd);
 	replace_emptylines(buff, copied_lines);
 	line = strtok(buff, "\n");
