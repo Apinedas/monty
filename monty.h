@@ -46,12 +46,13 @@ typedef struct instruction_s
 
 /** functions **/
 
-void *_calloc(unsigned int nmemb, unsigned int size);
 int _strlen(char *s);
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 int string_is_int(char *s);
+void lines_to_array(char *line, char **copy);
+void replace_emptylines(char *buff, char **copy);
 void initialize_buffer(char *s, int size);
 void initialize_array(char **s, int size);
 size_t print_dlistint(stack_t *h);
@@ -71,8 +72,9 @@ void op_sub(stack_t **stack, unsigned int line_number);
 void op_div(stack_t **stack, unsigned int line_number);
 void op_mul(stack_t **stack, unsigned int line_number);
 void op_mod(stack_t **stack, unsigned int line_number);
-void lines_to_array(char *line, char **copy);
-void replace_emptylines(char *buff, char **copy);
+void op_pchar(stack_t **stack, unsigned int line_number);
+void op_pstr(stack_t **stack, unsigned int line_number);
+
 
 /** macros **/
 
