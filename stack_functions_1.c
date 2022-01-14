@@ -66,7 +66,7 @@ void op_pop(stack_t **stack, unsigned int line_number)
 {
 	if (!stack || !*stack)
 	{
-		fprintf(stderr, "L%d: can't pop an stack empty\n", line_number);
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
 	}
