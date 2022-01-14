@@ -42,7 +42,7 @@ void op_pchar(stack_t **stack, unsigned int line_number)
 		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
 	}
-	else if (((*stack)->n) > 127)
+	else if (((*stack)->n) > 127 || ((*stack)->n) < 0)
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
 		free_dlistint(*stack);
