@@ -9,14 +9,14 @@
 
 int main(int argc, char **argv)
 {
-	char buff[4096], *line, *copied_lines[4096], *exec_line = NULL;
+	char buff[10000], *line, *copied_lines[10000], *exec_line = NULL;
 	int fd;
 	unsigned int i;
 	void (*handling_function)(stack_t **, unsigned int);
 	stack_t *stack = NULL;
 
-	initialize_buffer(buff, 4096);
-	initialize_array(copied_lines, 4096);
+	initialize_buffer(buff, 10000);
+	initialize_array(copied_lines, 10000);
 	if (argc != 2)
 		USAGE_ERROR;
 	fd = open(argv[1], O_RDONLY);
