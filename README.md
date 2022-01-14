@@ -109,7 +109,8 @@ Usage: nop
 
 
 # Links
-[FIFO and LIFO Accounting](http://https://en.wikipedia.org/wiki/FIFO_and_LIFO_accounting "FIFO and LIFO Accounting")
-[The Monty Scripting Language](http://montyscoconut.github.io/about.html "The Monty Scripting Language")
-[Stacks ](https://www.youtube.com/watch?v=9Tp8wHD66lw "Stacks ")
+- [FIFO and LIFO Accounting](http://https://en.wikipedia.org/wiki/FIFO_and_LIFO_accounting "FIFO and LIFO Accounting")
+- [The Monty Scripting Language](http://montyscoconut.github.io/about.html "The Monty Scripting Language")
+- [Stacks ](https://www.youtube.com/watch?v=9Tp8wHD66lw "Stacks ")
 
+------------
