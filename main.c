@@ -9,20 +9,20 @@
 
 int main(int argc, char **argv)
 {
-	char buff[10000], *line, *copied_lines[10000], *exec_line = NULL;
+	char buff[40000], *line, *copied_lines[4096], *exec_line = NULL;
 	int fd;
 	unsigned int i;
 	void (*handling_function)(stack_t **, unsigned int);
 	stack_t *stack = NULL;
 
-	initialize_buffer(buff, 10000);
-	initialize_array(copied_lines, 10000);
+	initialize_buffer(buff, 40000);
+	initialize_array(copied_lines, 4096);
 	if (argc != 2)
 		USAGE_ERROR;
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 		OPEN_ERROR(argv[1]);
-	read(fd, buff, 10000);
+	read(fd, buff, 40000);
 	close(fd);
 	replace_emptylines(buff, copied_lines);
 	line = strtok(buff, "\n");
